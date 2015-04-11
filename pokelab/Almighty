@@ -1,0 +1,8 @@
+
+DELETE pokemon_moves FROM pokemon_moves
+LEFT OUTER JOIN (
+    SELECT MIN(id) as row_id, pokemon_id, move_id
+    FROM pokemon_moves
+    GROUP BY pokemon_id, move_id
+) as keep_row ON id = keep_row.row_id
+WHERE keep_row.row_id IS NULL
