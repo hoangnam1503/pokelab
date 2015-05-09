@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+
+.left {
+  position:fixed; // keep fixed to window
+  padding: 10px;
+  top: 0; left: 0; // position to top left of window
+  height:100%; width:50px; //set dimensions
+  background:darkslategray;
+  transition: width ease .5s; // fluid transition when resizing
+
+  /* Sass/Scss only:
+    Using a selector (.open-nav) with an "&" afterward is actually selecting
+  any parent selector. For instance, this outputs "body.open-nav .left { ... }"
+  More info: http://thesassway.com/intermediate/referencing-parent-selectors-using-ampersand
+  */
+  body.open-nav & {
+    width:250px;
+  }
+
+  ul {
+    list-style:none;
+    margin:0; padding:0;
+
+    li {
+      margin-bottom:25px;
+    }
+  }
+
+  a {
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:
+    color ease .35s,
+    border-bottom-color ease .35s;
+
+    &:hover {
+      color:white;
+      border-bottom-color:white;
+    }
+
+    &.open {
+      font-size:1.75rem;
+      font-weight:700;
+      border:0;
+    }
+  }
+}
+
+.right {
+  position:relative;
+  margin-left:75px; // push the right column past the left column, with some room as well.
+  transition:margin-left ease .5s; // fluid transition when resizing
+
+  body.open-nav & {
+    margin-left:275px; // push the right column further when left is opened
+  }
+}

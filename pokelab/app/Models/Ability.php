@@ -12,4 +12,7 @@ class Ability extends Model {
         return $this->hasMany('PokemonAbillity');
     }
 
+    public function generation() {
+        return $this->hasOne('Generation');
+    }
 }

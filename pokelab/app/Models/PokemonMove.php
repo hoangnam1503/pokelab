@@ -15,4 +15,12 @@ class PokemonMove extends Model {
     public function pokemon() {
         return $this->belongsTo('Pokemon');
     }
+
+    public function pokemonMoveMethod() {
+        return $this->belongsTo('PokemonMoveMethod');
+    }
+
+    public function generation() {
+        return $this->hasOne('VersionGroup');
+    }
 }

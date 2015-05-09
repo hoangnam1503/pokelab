@@ -8,6 +8,14 @@ class Move extends Model {
 
     protected $table = 'moves';
 
+    public function type() {
+        return $this->belongsTo('Type');
+    }
+
+    public function damageClass() {
+        return $this->belongsTo('DamageClass');
+    }
+
     public function moveEffect() {
         return $this->hasMany('MoveEffect');
     }
